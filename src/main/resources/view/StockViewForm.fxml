@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="533.0" prefWidth="985.0" style="-fx-background-color: #7FFFD4;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.supermarket.controller.StockViewFormController">
+   <children>
+      <TextField fx:id="txtSearchId" layoutX="705.0" layoutY="5.0" onAction="#searchItemIdOnAction" prefHeight="31.0" prefWidth="300.0" promptText="Search Item" />
+      <Button layoutX="627.0" layoutY="1.0" mnemonicParsing="false" onAction="#refershButtonOnAction" prefHeight="38.0" prefWidth="39.0" style="-fx-background-color: #7FFFD4;">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <ImageView layoutX="973.0" layoutY="6.0" opacity="0.26">
+         <image>
+            <Image url="@../Accses/icons8-search-30.png" />
+         </image>
+      </ImageView>
+      <ImageView layoutX="652.0" layoutY="5.0">
+         <image>
+            <Image url="@../Accses/icons8-refresh-30.png" />
+         </image>
+      </ImageView>
+      <TableView fx:id="tbleStock" layoutY="41.0" prefHeight="492.0" prefWidth="1010.0">
+        <columns>
+          <TableColumn fx:id="clId" prefWidth="159.0" text="Item_ID" />
+          <TableColumn fx:id="clType" prefWidth="348.0" text="Item_Type" />
+            <TableColumn fx:id="clCount" prefWidth="91.0" text="Quntity" />
+            <TableColumn fx:id="clPlaceHolder" prefWidth="103.0" text="Pace_Holder" />
+            <TableColumn fx:id="clPrice" prefWidth="155.0" text="Price" />
+            <TableColumn fx:id="clPrice1" prefWidth="144.0" text="Sell Price" />
+        </columns>
+      </TableView>
+      <ListView fx:id="ListView" layoutX="705.0" layoutY="36.0" prefHeight="88.0" prefWidth="300.0" />
+   </children>
+</AnchorPane>

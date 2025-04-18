@@ -1,0 +1,169 @@
+﻿CREATE DATABASE supermarket;
+
+use supermarket;
+
+CREATE TABLE stock(
+	id VARCHAR(50)PRIMARY KEY,
+	type VARCHAR(50),
+	count int(10),
+	sellPrice Double(10,2), 
+	price double(10,2),
+	plase_Holder Varchar(50)
+);
+
+
+CREATE TABLE orders (
+    orderId INT,
+    productId VARCHAR(10),
+    count INT,
+    date DATE,
+    onePrice DECIMAL(10, 2),
+    oneDiscount DECIMAL(10,2), 
+    price DECIMAL(10,2),
+    primary key(orderId,productId),
+ FOREIGN KEY (productId) REFERENCES stock(id) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE orderDetails(
+    vehicleNb Varchar(30),
+milagage Varchar(30),
+nextmilagage Varchar(30),
+    tel VARCHAR(10),
+    orderId INT,
+    primary key(orderId,vehicleNb),
+ FOREIGN KEY (orderId) REFERENCES orders(orderId) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE payments (
+    paymentId INT AUTO_INCREMENT,
+    orderId INT,
+    productId VARCHAR(10),
+    count INT,
+    date DATE,
+    onePrice DECIMAL(10,2),  
+    discount DECIMAL(10, 2),
+    price DECIMAL(10, 2),
+    PRIMARY KEY (paymentId, orderId)
+   
+);
+
+CREATE TABLE higabill (
+	orderId int,
+	vehicleId VARCHAR(59),
+	customerTel varchar(10),
+	date date,
+	totalPrice double(10,2),
+	higa double(10,2),
+	FOREIGN KEY (orderId) REFERENCES orders(orderId) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+
+CREATE TABLE qtation (
+    qtId int ,
+    type VARCHAR(50),
+    count int,
+    price double(10,2),
+ PRIMARY KEY (qtId, type)
+);
+
+
+CREATE TABLE qtDetails (
+    qtyId INT PRIMARY KEY, 
+    vehicleNB VARCHAR(50),
+    name VARCHAR(100),
+    Date DATE,
+    tel VARCHAR(10),
+FOREIGN KEY (qtyId) REFERENCES qtation(qtId) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+
+
+CREATE TABLE admin (
+    userName VARCHAR(50),
+    password VARCHAR(59)
+);
+
+
+ insert into admin VALUES('Root','1234');
+
+
+
+
+SET FOREIGN_KEY_CHECKS = 0;
+TRUNCATE TABLE orders;
+SET FOREIGN_KEY_CHECKS = 1;
+
+
+DELETE FROM orders
+WHERE orderId = (
+    SELECT MAX(orderId) FROM orders
+);
+
+
+
+select o.productId,o.count,o.onePrice,o.oneDiscount,o.price from orders o join orderdetails d on o.orderId = d.orderId where d.vehicleNb = '2222';
+
+
+
+
+ public String insertOrder(DashBordManageDto dashBordManageDto) throws SQLException, ClassNotFoundException {
+        Connection connection = DBConnection.getInstance().getConnection();
+        String sql = "INSERT INTO orders VALUES(?,?,?,?,?,?)";
+        PreparedStatement statement = connection.prepareStatement(sql);
+
+        statement.setInt(1,dashBordManageDto.getOrderId());
+        statement.setString(2,dashBordManageDto.getProductId());
+        statement.setInt(3,dashBordManageDto.getCount());
+        statement.setString(4,dashBordManageDto.getDate());
+        statement.setInt(5,dashBordManageDto.getDiscount());
+        statement.setDouble(6,dashBordManageDto.getPrice());
+
+        int resp = statement.executeUpdate();
+        return resp > 0 ? "sucsess" : "fail";
+    }
+
+
+
+
+
+INSERT INTO orders VALUES("323",21,"2023-23-11",32,32);
+
+
+ try {
+                           List<DashBordManageDto> dd = ST_MANAGE_MODEL.loadTb();
+                            OLis.addAll(dd);
+                            tblLoad.setItems(OLis);
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+
+
+
+
+
+
+
+
+SELECT c.productId,s.type,SUM(c.count)as count,SUM(c.price) FROM payments c  
+JOIN stock s ON c.productId = s.id WHERE c.date = '2024-10-10' GROUP by c.productId ;
+
+
+
+
+
+
+
+
+
+
+
+
+ඉදිරියට ඇති පොහොර හිග මුදල්
+
+ඉදිරියට ඇති  හිග මුදල්
+
+ඉදිරියට ඇති ණය  හිග මුදල්
+
+
+
+

@@ -1,0 +1,206 @@
+/* Global Styles */
+.root {
+    -fx-font-family: 'Poppins', sans-serif;
+    -fx-background-color: linear-gradient(to bottom, #1E1E2E, #141422);
+    -fx-text-fill: white;
+
+}
+
+/* Sidebar Navigation */
+.nav-button {
+    -fx-background-color: #8e1924;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px;
+    -fx-background-radius: 8px;
+    -fx-border-color: transparent;
+}
+
+#nav-button:hover {
+    -fx-background-color: #40456A;
+}
+
+#slide {
+    -fx-background-color: linear-gradient(to bottom, #122e4b, #0d2339);
+}
+
+
+#nav-button {
+    -fx-background-color: #0e7774  ;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-padding: 13px;
+    -fx-background-radius: 8px;
+    -fx-border-color: transparent;
+}
+
+#nav-button:hover {
+    -fx-background-color: #40456A;
+}
+#nav-button:pressed {
+    -fx-background-color: #2A6399; /* තවත් තද පාටක් */
+    -fx-scale-x: 0.95; /* බටන් එක 5% පොඩි කරන්න */
+    -fx-scale-y: 0.95; /* බටන් එක 5% පොඩි කරන්න */
+}
+
+
+
+/* Labels */
+.label {
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+}
+#label {
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+}
+
+#Supun{
+    -fx-text-fill: white;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+/* Text Fields */
+.text-field {
+    -fx-background-color: #2C2F48;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 8px;
+    -fx-border-color: #3B3F5C;
+    -fx-border-radius: 5px;
+}
+
+.text-field:focused {
+    -fx-border-color: #007BFF;
+}
+
+#text-field {
+    -fx-background-color: #2C2F48;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 8px;
+    -fx-border-color: #3B3F5C;
+    -fx-border-radius: 5px;
+}
+
+#text-field:focused {
+    -fx-border-color: #007BFF;
+}
+
+
+/* Buttons */
+#primary-button {
+    -fx-background-color: #252836;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 5px;
+    -fx-background-radius: 5px;
+}
+#primary-button:pressed {
+    -fx-background-color: #2A6399; /* තවත් තද පාටක් */
+    -fx-scale-x: 0.95; /* බටන් එක 5% පොඩි කරන්න */
+    -fx-scale-y: 0.95; /* බටන් එක 5% පොඩි කරන්න */
+}
+
+
+#primary-button:hover {
+    -fx-background-color: #3B3F5C;
+}
+
+#success-button {
+    -fx-background-color: #28A745;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 5px;
+    -fx-background-radius: 5px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0, 0, 2);
+}
+
+#success-button:hover {
+    -fx-background-color: #1e7e34;
+}
+#success-button:pressed {
+    -fx-background-color: #2A6399; /* තවත් තද පාටක් */
+    -fx-scale-x: 0.95; /* බටන් එක 5% පොඩි කරන්න */
+    -fx-scale-y: 0.95; /* බටන් එක 5% පොඩි කරන්න */
+}
+
+
+#danger-button {
+    -fx-background-color: #DC3545;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 5px;
+    -fx-background-radius: 5px;
+}
+
+#danger-button:hover {
+    -fx-background-color: #a71d2a;
+}
+
+#danger-button:pressed {
+    -fx-background-color: #8e1924; /* තවත් තද පාටක් */
+    -fx-scale-x: 0.95; /* බටන් එක 5% පොඩි කරන්න */
+    -fx-scale-y: 0.95; /* බටන් එක 5% පොඩි කරන්න */
+}
+
+
+/* Table View */
+.table-view {
+    -fx-background-color: #252836;
+    -fx-border-color: #3B3F5C;
+    -fx-text-fill: white;
+}
+
+.table-column {
+    -fx-background-color: #3B3F5C;
+    -fx-text-fill: white;
+}
+
+.table-row-cell {
+    -fx-background-color: #1E1E2E;
+    -fx-border-color: transparent;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #007BFF;
+    -fx-text-fill: white;
+}
+
+/* Scroll Bar */
+.scroll-bar {
+    -fx-background-color: #2C2F48;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #3B3F5C;
+}
+
+#buttonAncorPane{
+    -fx-background-color: #1E1E2E;
+}
+
+
+
+
+
+
+
+
+
+
+#stockManage{
+    -fx-font-size: 33px;
+}
+
+
+
+
+
+
+

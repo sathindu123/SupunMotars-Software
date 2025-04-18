@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="736.0" prefWidth="1379.0" style="-fx-background-color: #ffffff;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.supermarket.controller.DashbordController">
+   <children>
+      <VBox id="slide" prefHeight="700.0" prefWidth="263.0" stylesheets="@style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <VBox layoutX="262.0" prefHeight="1004.0" prefWidth="1117.0" stylesheets="@style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="262.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane prefHeight="1004.0" prefWidth="1065.0" style="-fx-background-color: #040720;" stylesheets="@style.css">
+               <children>
+                  <Label id="label" layoutX="391.0" layoutY="571.0" prefHeight="32.0" prefWidth="276.0" stylesheets="@style.css" AnchorPane.bottomAnchor="133.0">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="398.0" layoutY="578.0" prefHeight="17.0" prefWidth="97.0" text="Total Price" textFill="#e9f80b" AnchorPane.bottomAnchor="133.0">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblTotPrice" alignment="CENTER_RIGHT" layoutX="518.0" layoutY="575.0" prefHeight="25.0" prefWidth="149.0" text="0.00 " textFill="#ffdd00" AnchorPane.bottomAnchor="136.0">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Button id="success-button" fx:id="addBtn" layoutX="9.0" layoutY="472.0" mnemonicParsing="false" onAction="#AddAonAction" prefHeight="30.0" prefWidth="166.0" stylesheets="@style.css" text="ADD +" textFill="#e4e4e4" AnchorPane.bottomAnchor="234.0">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button id="primary-button" fx:id="updateBtn" layoutX="354.0" layoutY="472.0" mnemonicParsing="false" onAction="#OnActionUpdateBtn" prefHeight="30.0" prefWidth="166.0" stylesheets="@style.css" text="RESET" textFill="WHITE" AnchorPane.bottomAnchor="234.0">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button id="danger-button" fx:id="deleteBtn" layoutX="182.0" layoutY="472.0" mnemonicParsing="false" onAction="#OnActionDeleteBtn" prefHeight="30.0" prefWidth="166.0" stylesheets="@style.css" text="DELETE" textFill="WHITE" AnchorPane.bottomAnchor="234.0">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Label layoutX="887.0" layoutY="54.0" prefHeight="17.0" prefWidth="97.0" text="NET PRICE" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="211.0" layoutY="55.0" prefHeight="25.0" prefWidth="139.0" text="PRODUCT" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="455.0" layoutY="55.0" prefHeight="17.0" prefWidth="97.0" text="Qty" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="698.0" layoutY="55.0" prefHeight="17.0" prefWidth="97.0" text="DISCOUNT" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="586.0" layoutY="55.0" prefHeight="25.0" prefWidth="97.0" text="Sell Price" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <TableView fx:id="tblLoad" layoutX="9.0" layoutY="76.0" onMouseClicked="#OnMouseClick" prefHeight="392.0" prefWidth="1105.0" AnchorPane.bottomAnchor="268.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="76.0">
+                    <columns>
+                        <TableColumn fx:id="clNb" prefWidth="44.0" text="QT" />
+                      <TableColumn fx:id="clType" prefWidth="384.0">
+                           <graphic>
+                              <TextField fx:id="txId" onAction="#OnActionID" prefHeight="25.0" prefWidth="440.0" />
+                           </graphic>
+                        </TableColumn>
+                        <TableColumn fx:id="clCount" prefWidth="57.0">
+                           <graphic>
+                              <TextField fx:id="txCount" onAction="#OnActionTxCount" prefHeight="25.0" prefWidth="41.0" />
+                           </graphic>
+                        </TableColumn>
+                        <TableColumn fx:id="clSellPrice" prefWidth="174.0">
+                           <graphic>
+                              <Label fx:id="lblPrice" text="0.00">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                           </graphic>
+                        </TableColumn>
+                        <TableColumn prefWidth="54.0">
+                           <graphic>
+                              <TextField fx:id="txPresantage" onAction="#OnActionPresantage" promptText="  %" />
+                           </graphic>
+                        </TableColumn>
+                        <TableColumn fx:id="clDis" prefWidth="192.0">
+                           <graphic>
+                              <TextField fx:id="txDiscount" onAction="#OnActionDiscount" prefHeight="25.0" prefWidth="312.0" />
+                           </graphic>
+                        </TableColumn>
+                        <TableColumn fx:id="clPrice" prefWidth="199.0">
+                           <graphic>
+                              <TextField fx:id="txPrice" onAction="#onActionPrice" prefHeight="25.0" prefWidth="182.0" />
+                           </graphic>
+                        </TableColumn>
+                    </columns>
+                  </TableView>
+                  <TextField id="text-field" fx:id="txtvehicleId" layoutX="136.0" layoutY="555.0" onAction="#OnActionVehicle" prefHeight="25.0" prefWidth="180.0" stylesheets="@style.css" AnchorPane.bottomAnchor="143.0" />
+                  <Label layoutX="15.0" layoutY="562.0" prefHeight="25.0" prefWidth="139.0" text="Vehicle-NB" textFill="WHITE" AnchorPane.bottomAnchor="149.0">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <VBox layoutX="872.0" layoutY="559.0" prefHeight="264.0" prefWidth="253.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="3.0">
+                     <children>
+                        <AnchorPane id="buttonAncorPane" prefHeight="260.0" prefWidth="253.0" style="-fx-background-color: #040720;" stylesheets="@style.css">
+                           <children>
+                              <Button layoutX="77.0" layoutY="135.0" mnemonicParsing="false" onAction="#RePrintBill" prefHeight="53.0" prefWidth="166.0" style="-fx-background-color: #577353;">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button layoutX="77.0" layoutY="199.0" mnemonicParsing="false" onAction="#CustomerReturnOnAction" prefHeight="53.0" prefWidth="166.0" style="-fx-background-color: #a71d2a;">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Label alignment="CENTER" layoutX="118.0" layoutY="200.0" prefHeight="17.0" prefWidth="89.0" text="Customer " textAlignment="CENTER" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" layoutX="115.0" layoutY="223.0" prefHeight="17.0" prefWidth="89.0" text="Return" textAlignment="CENTER" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" layoutX="118.0" layoutY="141.0" prefHeight="17.0" prefWidth="89.0" text="Re-Print " textAlignment="CENTER" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" layoutX="114.0" layoutY="161.0" prefHeight="17.0" prefWidth="89.0" text="Bills" textAlignment="CENTER" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Button layoutX="76.0" layoutY="6.0" mnemonicParsing="false" onAction="#onActionPayUpbtn" prefHeight="53.0" prefWidth="166.0" style="-fx-background-color: #28A745;" text="Pay-Up" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button layoutX="77.0" layoutY="71.0" mnemonicParsing="false" onAction="#savebtnOnAction" prefHeight="53.0" prefWidth="166.0" style="-fx-background-color: #2e5e2a;" text="Save Orders" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </VBox>
+                  <Label layoutX="399.0" layoutY="621.0" prefHeight="32.0" prefWidth="139.0" text="Cash Pay" textFill="#0004ff" AnchorPane.bottomAnchor="83.0">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtcashPay" alignment="CENTER_RIGHT" layoutX="501.0" layoutY="621.0" onAction="#OnActioncashPay" prefHeight="32.0" prefWidth="166.0" promptText="###" AnchorPane.bottomAnchor="83.0" />
+                  <Label layoutX="398.0" layoutY="666.0" prefHeight="32.0" prefWidth="139.0" text="Balance" textFill="#ff20cb" AnchorPane.bottomAnchor="38.0">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblBalance" alignment="CENTER_RIGHT" layoutX="500.0" layoutY="667.0" prefHeight="32.0" prefWidth="166.0" text="0.00" textFill="#ff20cb" AnchorPane.bottomAnchor="37.0">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtDate" layoutX="136.0" layoutY="601.0" prefHeight="25.0" prefWidth="180.0" stylesheets="@style.css" AnchorPane.bottomAnchor="97.0" />
+                  <Label layoutX="15.0" layoutY="608.0" prefHeight="25.0" prefWidth="89.0" text="DATE" textFill="WHITE" AnchorPane.bottomAnchor="103.0">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblName" layoutX="268.0" layoutY="59.0" prefHeight="17.0" prefWidth="97.0" />
+                  <TextField fx:id="OrderIDLBL" layoutX="917.0" layoutY="21.0" onAction="#onActionOrderID" prefHeight="25.0" prefWidth="110.0" text="1" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="21.0" />
+                  <TextField id="text-field" fx:id="customerTel" layoutX="136.0" layoutY="510.0" onAction="#onActionTel" prefHeight="25.0" prefWidth="180.0" stylesheets="@style.css" AnchorPane.bottomAnchor="188.0" />
+                  <Label layoutX="15.0" layoutY="517.0" prefHeight="25.0" prefWidth="139.0" text="Customer Tel" textFill="WHITE" AnchorPane.bottomAnchor="194.0">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <VBox layoutX="671.0" layoutY="595.0" prefHeight="129.0" prefWidth="186.0" AnchorPane.bottomAnchor="25.0">
+                     <children>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <Label fx:id="lblNameHiga" alignment="CENTER" layoutX="13.0" layoutY="1.0" prefHeight="38.0" prefWidth="186.0" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold Italic" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lblHigaCount" alignment="CENTER" layoutX="16.0" layoutY="31.0" prefHeight="50.0" prefWidth="186.0" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </VBox>
+                  <ImageView layoutX="1083.0" layoutY="28.0" onMouseClicked="#ONMOuseRe" AnchorPane.rightAnchor="9.0">
+                     <image>
+                        <Image url="@../Accses/icons8-refresh-25.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <Label layoutX="15.0" layoutY="654.0" prefHeight="25.0" prefWidth="139.0" text="MILEAGE" textFill="WHITE" AnchorPane.bottomAnchor="57.0">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="15.0" layoutY="713.0" prefHeight="25.0" prefWidth="139.0" text="NEXT MILEAGE" textFill="WHITE" AnchorPane.bottomAnchor="11.0">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="Ml" layoutX="136.0" layoutY="647.0" onAction="#onActionMileage" prefHeight="25.0" prefWidth="180.0" AnchorPane.bottomAnchor="51.0" />
+                  <TextField fx:id="Ml1" layoutX="136.0" layoutY="693.0" onAction="#OnActionNextMileage" prefHeight="25.0" prefWidth="180.0" AnchorPane.bottomAnchor="5.0" />
+                  <Label id="Supun" alignment="CENTER" layoutX="1.0" prefHeight="53.0" prefWidth="985.0" stylesheets="@style.css" text="                SUPUN MOTORS &amp; SERVICE CENTER" textFill="#347928" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="131.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="System Bold Italic" size="36.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+      <ImageView fitHeight="38.0" fitWidth="40.0" layoutX="30.0" layoutY="28.0">
+         <image>
+            <Image url="@../Accses/user.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="84.0" layoutY="33.0" prefHeight="25.0" prefWidth="139.0" text="SUPUN" textFill="WHITE">
+         <font>
+            <Font name="System Italic" size="21.0" />
+         </font>
+      </Label>
+      <ToggleButton id="nav-button" fx:id="Stock" layoutX="-21.0" layoutY="146.0" mnemonicParsing="false" onAction="#StockManageOnAction" prefHeight="40.0" prefWidth="253.0" stylesheets="@style.css" text="Stock Manage    " textAlignment="RIGHT" textFill="#347928" AnchorPane.leftAnchor="-21.0">
+         <font>
+            <Font name="System Bold Italic" size="23.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </ToggleButton>
+      <Line endX="40.0" layoutX="-40.0" layoutY="104.0" startX="303.0" strokeWidth="3.0" />
+      <Button id="danger-button" layoutX="39.0" layoutY="698.0" mnemonicParsing="false" onAction="#logoutOnAction" prefHeight="25.0" prefWidth="180.0" stylesheets="@style.css" text="         LOG OUT" textFill="WHITE" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="39.0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Button>
+      <ToggleButton id="nav-button" fx:id="View" layoutX="-29.0" layoutY="235.0" mnemonicParsing="false" onAction="#btnOnActionView" prefHeight="40.0" prefWidth="263.0" stylesheets="@style.css" text="View" textAlignment="RIGHT" textFill="#347928" AnchorPane.leftAnchor="-29.0">
+         <font>
+            <Font name="System Bold Italic" size="23.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </ToggleButton>
+      <ToggleButton id="nav-button" fx:id="Bill" layoutX="-19.0" layoutY="324.0" mnemonicParsing="false" onAction="#BillSearch" prefHeight="32.0" prefWidth="253.0" stylesheets="@style.css" text="Bill Search" textAlignment="RIGHT" textFill="#347928" AnchorPane.leftAnchor="-19.0">
+         <font>
+            <Font name="System Bold Italic" size="23.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </ToggleButton>
+      <ToggleButton id="nav-button" fx:id="Qutation" layoutX="-20.0" layoutY="413.0" mnemonicParsing="false" onAction="#ONActionBillQutation" prefHeight="32.0" prefWidth="253.0" stylesheets="@style.css" text="Qutation" textAlignment="RIGHT" textFill="#347928" AnchorPane.leftAnchor="-20.0">
+         <font>
+            <Font name="System Bold Italic" size="23.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </ToggleButton>
+      <ListView fx:id="ListView" layoutX="319.0" layoutY="122.0" prefHeight="149.0" prefWidth="378.0" stylesheets="@style.css" />
+      <ToggleButton id="nav-button" fx:id="Higabill" layoutX="-20.0" layoutY="502.0" mnemonicParsing="false" onAction="#higaBillOnAction" prefHeight="32.0" prefWidth="253.0" stylesheets="@style.css" text="View HigaBills" textAlignment="RIGHT" textFill="#347928" AnchorPane.leftAnchor="-20.0">
+         <font>
+            <Font name="System Bold Italic" size="23.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </ToggleButton>
+      <ToggleButton id="nav-button" fx:id="SearchStock" layoutX="-30.0" layoutY="591.0" mnemonicParsing="false" onAction="#ViewStockOnAction" prefHeight="30.0" prefWidth="263.0" stylesheets="@style.css" text="Search Stock" textAlignment="RIGHT" textFill="#347928" AnchorPane.leftAnchor="-30.0">
+         <font>
+            <Font name="System Bold Italic" size="23.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </ToggleButton>
+      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="71.0" layoutY="696.0" AnchorPane.bottomAnchor="15.0">
+         <image>
+            <Image url="@../Accses/logout.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
