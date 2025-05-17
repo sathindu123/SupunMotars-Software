@@ -32,12 +32,12 @@
                           </columns>
                         </TableView>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dddddd" height="506.0" layoutX="756.0" layoutY="53.0" stroke="BLACK" strokeType="INSIDE" width="559.0" />
-                        <Label alignment="CENTER" layoutX="756.0" layoutY="66.0" prefHeight="28.0" prefWidth="97.0" text="Day" textFill="#7c00fe">
+                        <Label id="l1" alignment="CENTER" layoutX="756.0" layoutY="66.0" prefHeight="28.0" prefWidth="97.0" stylesheets="@style.css" text="Day" textFill="#7c00fe">
                            <font>
                               <Font name="System Bold" size="19.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" layoutX="853.0" layoutY="66.0" prefHeight="28.0" prefWidth="183.0" text="Price" textFill="#7c00fe">
+                        <Label id="l1" alignment="CENTER" layoutX="853.0" layoutY="66.0" prefHeight="28.0" prefWidth="183.0" stylesheets="@style.css" text="Price" textFill="#7c00fe">
                            <font>
                               <Font name="System Bold" size="19.0" />
                            </font>
@@ -152,7 +152,7 @@
                               <Font name="System Bold" size="20.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" layoutX="1035.0" layoutY="289.0" prefHeight="30.0" prefWidth="95.0" text="22">
+                        <Label alignment="CENTER" layoutX="1035.0" layoutY="289.0" prefHeight="30.0" prefWidth="97.0" text="22">
                            <font>
                               <Font name="System Bold" size="20.0" />
                            </font>
@@ -205,27 +205,27 @@
                         <Line endY="54.0" layoutX="853.0" layoutY="54.0" />
                         <Line endY="54.0" layoutX="1036.0" layoutY="54.0" />
                         <Line endY="54.0" layoutX="1132.0" layoutY="54.0" />
-                        <Label alignment="CENTER" layoutX="1022.0" layoutY="66.0" prefHeight="28.0" prefWidth="97.0" text="Day" textFill="#7c00fe">
+                        <Label id="l1" alignment="CENTER" layoutX="1022.0" layoutY="66.0" prefHeight="28.0" prefWidth="97.0" stylesheets="@style.css" text="Day" textFill="#7c00fe">
                            <font>
                               <Font name="System Bold" size="19.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" layoutX="1132.0" layoutY="66.0" prefHeight="28.0" prefWidth="183.0" text="Price" textFill="#7c00fe">
+                        <Label id="l1" alignment="CENTER" layoutX="1132.0" layoutY="66.0" prefHeight="28.0" prefWidth="183.0" text="Price" textFill="#7c00fe">
                            <font>
                               <Font name="System Bold" size="19.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" layoutX="147.0" layoutY="9.0" prefHeight="36.0" prefWidth="435.0" text="DAILY PURCHASE VIEWS" textFill="WHITE">
+                        <Label id="l2" alignment="CENTER" layoutX="147.0" layoutY="9.0" prefHeight="36.0" prefWidth="435.0" text="DAILY PURCHASE VIEWS" textFill="WHITE">
                            <font>
                               <Font name="Arial Rounded MT Bold" size="30.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" layoutX="805.0" layoutY="10.0" prefHeight="36.0" prefWidth="472.0" text="MONTHLY PURCHASE VIEWS" textFill="WHITE">
+                        <Label id="l2" alignment="CENTER" layoutX="805.0" layoutY="10.0" prefHeight="36.0" prefWidth="472.0" text="MONTHLY PURCHASE VIEWS" textFill="WHITE">
                            <font>
                               <Font name="Arial Rounded MT Bold" size="30.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lblTotDaily" alignment="CENTER_RIGHT" layoutX="497.0" layoutY="596.0" prefHeight="35.0" prefWidth="224.0" style="-fx-background-color: #007BFF;">
+                        <Label fx:id="lblTotDaily" alignment="CENTER_RIGHT" layoutX="497.0" layoutY="596.0" prefHeight="35.0" prefWidth="224.0" style="-fx-background-color: #add8e6;">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -235,17 +235,17 @@
                               <Font name="System Bold" size="24.0" />
                            </font>
                         </Label>
-                        <Label layoutX="1093.0" layoutY="593.0" prefHeight="35.0" prefWidth="224.0" style="-fx-background-color: #007BFF;">
+                        <Label layoutX="1093.0" layoutY="593.0" prefHeight="35.0" prefWidth="224.0" style="-fx-background-color: #add8e6;">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
                         </Label>
-                        <Label fx:id="netAmount" alignment="CENTER_RIGHT" layoutX="497.0" layoutY="635.0" prefHeight="35.0" prefWidth="224.0" style="-fx-background-color: #007BFF;" stylesheets="@style.css">
+                        <Label fx:id="netAmount" alignment="CENTER_RIGHT" layoutX="497.0" layoutY="637.0" prefHeight="35.0" prefWidth="224.0" style="-fx-background-color: #28A745;" stylesheets="@style.css">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
                         </Label>
-                        <Label layoutX="265.0" layoutY="635.0" prefHeight="35.0" prefWidth="215.0" text="Net Amount Daily" textFill="WHITE">
+                        <Label layoutX="265.0" layoutY="637.0" prefHeight="35.0" prefWidth="215.0" text="Net Amount Daily" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>

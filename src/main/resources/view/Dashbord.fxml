@@ -265,6 +265,8 @@
                         <Font name="System Bold Italic" size="36.0" />
                      </font>
                   </Label>
+                  <Label fx:id="lblQty" layoutX="13.0" layoutY="13.0" prefHeight="38.0" prefWidth="55.0" text="QTY-&gt;" />
+                  <Label fx:id="lblQT" alignment="CENTER" layoutX="65.0" layoutY="13.0" prefHeight="38.0" prefWidth="89.0" text="0" />
                </children>
             </AnchorPane>
          </children>
@@ -332,7 +334,7 @@
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
       </ToggleButton>
-      <ToggleButton id="nav-button" fx:id="SearchStock" layoutX="-30.0" layoutY="591.0" mnemonicParsing="false" onAction="#ViewStockOnAction" prefHeight="30.0" prefWidth="263.0" stylesheets="@style.css" text="Search Stock" textAlignment="RIGHT" textFill="#347928" AnchorPane.leftAnchor="-30.0">
+      <ToggleButton id="nav-button" fx:id="SearchStock" layoutX="-30.0" layoutY="591.0" mnemonicParsing="false" onAction="#ViewStockOnAction" prefHeight="30.0" prefWidth="263.0" stylesheets="@style.css" text="Update Stock" textAlignment="RIGHT" textFill="#347928" AnchorPane.leftAnchor="-30.0">
          <font>
             <Font name="System Bold Italic" size="23.0" />
          </font>

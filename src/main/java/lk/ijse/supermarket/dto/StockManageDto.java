@@ -47,6 +47,12 @@ public class StockManageDto {
         this.price = price;
 
     }
+    public StockManageDto(String type,int count ,Double price){
+        this.type = type;
+        this.count = count;
+        this.price = price;
+
+    }
 
     public StockManageDto(String id, String type, int count, double price) {
         this.id = id;

@@ -4,7 +4,6 @@ import javafx.collections.ObservableList;
 import lk.ijse.supermarket.db.DBConnection;
 import lk.ijse.supermarket.dto.*;
 
-import java.net.ConnectException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -516,6 +515,9 @@ public class StockManageModel {
                     }
                 }
 
+
+           paybtn(odId);
+
             String sql2 = "insert into orderdetails VALUES(?,?,?,?,?)";
             PreparedStatement statement1 = connection.prepareStatement(sql2);
             statement1.setString(1, vehicleNb);
@@ -549,6 +551,15 @@ public class StockManageModel {
                 connection.setAutoCommit(true); // Reset autocommit to true
             }
         }
+    }
+
+    private void paybtn(int odId) throws SQLException, ClassNotFoundException {
+        Connection connection = DBConnection.getInstance().getConnection();
+        String sql1 = "delete from orderdetails where orderId = ?";
+        PreparedStatement statement1 = connection.prepareStatement(sql1);
+        statement1.setInt(1, odId);
+        int rst = statement1.executeUpdate();
+
     }
 
     public List<DashBordManageDto> pastDetailPayments(int odId) throws SQLException, ClassNotFoundException {
@@ -770,11 +781,38 @@ public class StockManageModel {
         }
         return ss;
     }
-
     public boolean downcount(String id, int inputCount) throws SQLException, ClassNotFoundException {
         Connection connection = DBConnection.getInstance().getConnection();
 
         String selectSql = "SELECT count FROM stock WHERE id = ?";
+        try (PreparedStatement selectStmt = connection.prepareStatement(selectSql)) {
+            selectStmt.setString(1, id);
+            ResultSet resultSet = selectStmt.executeQuery();
+
+            if (resultSet.next()) {
+                int currentCount = resultSet.getInt("count");
+
+                if (currentCount < inputCount) {
+                    return false;
+                }
+                String updateSql = "UPDATE stock SET count = count - ? WHERE id = ?";
+                try (PreparedStatement updateStmt = connection.prepareStatement(updateSql)) {
+                    updateStmt.setInt(1, inputCount);
+                    updateStmt.setString(2, id);
+                    int rowsAffected = updateStmt.executeUpdate();
+
+                    return rowsAffected > 0;
+                }
+
+            }
+
+        }
+        return up(id, inputCount);
+    }
+    private boolean up(String id, int inputCount) throws SQLException, ClassNotFoundException {
+        Connection connection = DBConnection.getInstance().getConnection();
+
+        String selectSql = "SELECT count FROM stock WHERE type = ?";
         PreparedStatement selectStmt = connection.prepareStatement(selectSql);
         selectStmt.setString(1, id);
         ResultSet resultSet = selectStmt.executeQuery();
@@ -783,18 +821,14 @@ public class StockManageModel {
         if (resultSet.next()) {
             currentCount = resultSet.getInt("count");
         } else {
-            // If the ID doesn't exist, return false
             return false;
         }
-
 
         if (currentCount < inputCount) {
-            // The input count is greater than the current stock count, which would make it negative
             return false;
         }
-
         // Step 3: Proceed with the update if the check passes
-        String updateSql = "UPDATE stock SET count = count - ? WHERE id = ?";
+        String updateSql = "UPDATE stock SET count = count - ? WHERE type = ?";
         PreparedStatement updateStmt = connection.prepareStatement(updateSql);
         updateStmt.setInt(1, inputCount);
         updateStmt.setString(2, id);
@@ -803,5 +837,31 @@ public class StockManageModel {
         return rowsAffected > 0;
     }
 
+    public boolean selectCount(String partNo, int qty, double price, double sellPrice) throws SQLException, ClassNotFoundException {
+        Connection connection = DBConnection.getInstance().getConnection();
+        String selectSQL = "SELECT count FROM stock WHERE id = ?";
+        PreparedStatement selectStmt = connection.prepareStatement(selectSQL);
+        selectStmt.setString(1, partNo);
+        ResultSet rs = selectStmt.executeQuery();
+
+        if (rs.next()) {
+            int currentCount = rs.getInt("count");
+            int newCount = currentCount + qty;
+
+
+            // update record
+            String updateSQL = "UPDATE stock SET count = ?, sellPrice = ?, price = ? WHERE id = ?";
+            PreparedStatement updateStmt = connection.prepareStatement(updateSQL);
+            updateStmt.setInt(1, newCount);
+            updateStmt.setDouble(2, sellPrice);
+            updateStmt.setDouble(3, price);
+            updateStmt.setString(4, partNo);
+            updateStmt.executeUpdate();
+
+            return updateStmt.executeUpdate() > 0 ;
+        }
+        return false;
+    }
 }
+
 

@@ -13,19 +13,19 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1190.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.supermarket.controller.HelloController">
+<AnchorPane prefHeight="522.0" prefWidth="656.0" stylesheets="@loginpageStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.supermarket.controller.HelloController">
    <children>
-      <ImageView fitHeight="700.0" fitWidth="1190.0" opacity="0.88">
+      <ImageView fitHeight="524.0" fitWidth="656.0" opacity="0.45">
          <image>
             <Image url="@../Accses/178206608-master-repairman-repairing-motorcycle-with-wrench-closeup.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="335.0" fitWidth="403.0" layoutX="681.0" layoutY="347.0">
+      <ImageView fitHeight="328.0" fitWidth="403.0" layoutX="155.0" layoutY="188.0">
          <image>
             <Image url="@../Accses/round.png" />
          </image>
       </ImageView>
-      <Text layoutX="627.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hello,">
+      <Text layoutX="29.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hello,">
          <font>
             <Font size="36.0" />
          </font>
@@ -46,59 +46,41 @@
             </LinearGradient>
          </fill>
       </Text>
-      <Text layoutX="632.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="welcome!" wrappingWidth="289.57611083984375">
+      <Text layoutX="34.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="welcome!" wrappingWidth="289.57611083984375">
          <font>
             <Font name="System Bold" size="49.0" />
          </font>
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
-                  <Stop>
-                     <color>
-                        <Color blue="0.4842105209827423" red="0.10491228103637695" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color blue="0.4000000059604645" green="0.328000009059906" red="0.3199999928474426" />
-                     </color>
-                  </Stop>
+                  <Stop color="#1b007b" />
+                  <Stop color="#041cd3" offset="1.0" />
                </stops>
             </LinearGradient>
          </fill>
       </Text>
-      <PasswordField fx:id="txtPassword" layoutX="783.0" layoutY="493.0" onAction="#onActionPassword" prefHeight="30.0" prefWidth="228.0" promptText="Password" />
-      <TextField fx:id="txtUserName" layoutX="783.0" layoutY="453.0" onAction="#onActionUser" prefHeight="30.0" prefWidth="228.0" promptText="User Name" />
-      <Button layoutX="826.0" layoutY="558.0" mnemonicParsing="false" onAction="#btnLogin" prefHeight="31.0" prefWidth="139.0" style="-fx-background-color: #347928;" text="Login" textFill="#f2f2f2">
+      <PasswordField fx:id="txtPassword" layoutX="257.0" layoutY="334.0" onAction="#onActionPassword" prefHeight="30.0" prefWidth="228.0" promptText="Password" />
+      <TextField fx:id="txtUserName" layoutX="257.0" layoutY="289.0" onAction="#onActionUser" prefHeight="30.0" prefWidth="228.0" promptText="User Name" />
+      <Button id="danger-button" layoutX="300.0" layoutY="403.0" mnemonicParsing="false" onAction="#btnLogin" prefHeight="31.0" prefWidth="139.0" style="-fx-background-color: #041cd3;" stylesheets="@style.css" text="Login" textFill="#f2f2f2">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-      <ImageView fitHeight="36.0" fitWidth="38.0" layoutX="724.0" layoutY="451.0">
-         <image>
-
-         </image>
-      </ImageView>
-      <ImageView fitHeight="30.0" fitWidth="38.0" layoutX="724.0" layoutY="492.0">
-         <image>
-
-         </image>
-      </ImageView>
-      <ImageView fitHeight="30.0" fitWidth="38.0" layoutX="739.0" layoutY="492.0">
+      <ImageView fitHeight="30.0" fitWidth="38.0" layoutX="213.0" layoutY="333.0">
          <image>
             <Image url="@../Accses/padlock%20(1).png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="30.0" fitWidth="38.0" layoutX="739.0" layoutY="453.0">
+      <ImageView fitHeight="30.0" fitWidth="38.0" layoutX="213.0" layoutY="289.0">
          <image>
             <Image url="@../Accses/user%20(2).png" />
          </image>
       </ImageView>
-      <Label layoutX="918.0" layoutY="525.0" onMouseClicked="#OnMouseClick" text="Foreign Pssword" textFill="#2100f8" underline="true">
+      <Label layoutX="392.0" layoutY="371.0" onMouseClicked="#OnMouseClick" text="Foreign Pssword" textFill="#2100f8" underline="true">
          <font>
-            <Font name="System Bold Italic" size="12.0" />
+            <Font name="System Bold Italic" size="13.0" />
          </font>
       </Label>
-      <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="783.0" layoutY="234.0">
+      <ImageView fitHeight="133.0" fitWidth="158.0" layoutX="278.0" layoutY="140.0">
          <image>
             <Image url="@../Accses/user%20(1).png" />
          </image>

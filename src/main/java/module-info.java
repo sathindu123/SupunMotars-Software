@@ -2,9 +2,11 @@ module lk.ijse.supermarket {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
-    requires java.desktop;
     requires mysql.connector.j;
     requires jasperreports;
+    requires org.apache.poi.ooxml;
+    requires org.apache.poi.poi;
+    requires java.desktop;
     //  requires jasperreports;
 
     // Open the DTO package to javafx.base for reflection
@@ -17,6 +19,8 @@ module lk.ijse.supermarket {
     // Export packages if necessary
     exports lk.ijse.supermarket;
     exports lk.ijse.supermarket.controller;
-    exports lk.ijse.supermarket.model; // If accessed externally
+    exports lk.ijse.supermarket.model;
+    exports org.example.util;
+    opens org.example.util to javafx.fxml; // If accessed externally
 }
 

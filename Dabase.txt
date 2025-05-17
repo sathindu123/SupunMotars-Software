@@ -4,7 +4,7 @@ use supermarket;
 
 CREATE TABLE stock(
 	id VARCHAR(50)PRIMARY KEY,
-	type VARCHAR(50),
+	type VARCHAR(60),
 	count int(10),
 	sellPrice Double(10,2), 
 	price double(10,2),
@@ -14,7 +14,7 @@ CREATE TABLE stock(
 
 CREATE TABLE orders (
     orderId INT,
-    productId VARCHAR(10),
+    productId VARCHAR(50),
     count INT,
     date DATE,
     onePrice DECIMAL(10, 2),
@@ -26,8 +26,8 @@ CREATE TABLE orders (
 
 CREATE TABLE orderDetails(
     vehicleNb Varchar(30),
-milagage Varchar(30),
-nextmilagage Varchar(30),
+	milagage Varchar(30),
+	nextmilagage Varchar(30),
     tel VARCHAR(10),
     orderId INT,
     primary key(orderId,vehicleNb),
@@ -37,7 +37,7 @@ nextmilagage Varchar(30),
 CREATE TABLE payments (
     paymentId INT AUTO_INCREMENT,
     orderId INT,
-    productId VARCHAR(10),
+    productId VARCHAR(50),
     count INT,
     date DATE,
     onePrice DECIMAL(10,2),  

@@ -39,6 +39,8 @@ public class QutationController extends DashbordController {
     private String stockId;
 
     @FXML
+    private Button savebtn;
+    @FXML
     private ToggleButton Qutation;
     @FXML
     private TextField txtQtId;
@@ -89,6 +91,7 @@ public class QutationController extends DashbordController {
     private Button btnAdd;
 
     public void initialize() {
+        savebtn.setDisable(true);
         btnAdd.setDisable(false);
         cearFull();
         QT_MODEL = new QtatinModel();
@@ -441,5 +444,16 @@ public class QutationController extends DashbordController {
         txtCount.setText(""+tblQt.getSelectionModel().getSelectedItem().getCount());
         txtPrice.setText(""+tblQt.getSelectionModel().getSelectedItem().getPrice());
 
+    }
+
+    public void VNBOnaction(ActionEvent event) {
+        xtName.requestFocus();
+    }
+
+    public void NameOnaction(ActionEvent event) {
+        txtTel.requestFocus();
+    }
+
+    public void TelOnAction(ActionEvent event) {
     }
 }

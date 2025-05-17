@@ -90,7 +90,17 @@ public class DashbordManageModel {
 
         preparedStatement.setString(1, id);
         int resultSet = preparedStatement.executeUpdate();
-        return resultSet > 0 ? "SUCSESS" : "Fails";
+
+        if(resultSet > 0) {
+            String query1 = "delete FROM payments where orderId = ?";
+            PreparedStatement preparedStatement1 = connection.prepareStatement(query1);
+
+            preparedStatement1.setString(1, id);
+            int resultSet1 = preparedStatement1.executeUpdate();
+
+            return resultSet1>0 ? "Sucsess" : "Fail" ;
+        }
+        return "Fail";
 
     }
 
@@ -504,6 +514,35 @@ public class DashbordManageModel {
             orderId = resultSet.getInt(1);
         }
         return orderId;
+    }
+
+    public int getCount(String id) throws SQLException, ClassNotFoundException {
+        Connection connection = DBConnection.getInstance().getConnection();
+        String sql = "SELECT count FROM stock WHERE id = ? ";
+        PreparedStatement statement = connection.prepareStatement(sql);
+
+        statement.setString(1, id);
+
+        ResultSet rst = statement.executeQuery();
+
+        int cc = 0;
+
+        if(rst.next()){
+           cc = rst.getInt("count");
+        }
+
+
+        String sql1 = "SELECT count FROM stock WHERE type = ? ";
+        PreparedStatement statement1 = connection.prepareStatement(sql1);
+        statement1.setString(1, id);
+
+        ResultSet rst1 = statement1.executeQuery();
+
+        if (rst1.next()){
+            cc = rst1.getInt("count");
+        }
+
+        return cc;
     }
 }
 

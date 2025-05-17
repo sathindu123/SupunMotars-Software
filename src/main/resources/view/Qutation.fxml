@@ -38,10 +38,10 @@
                   </TableColumn>
               </columns>
             </TableView>
-            <TextField fx:id="txtVID" layoutX="154.0" layoutY="20.0" prefHeight="25.0" prefWidth="255.0" />
-            <TextField layoutX="154.0" layoutY="60.0" prefHeight="25.0" prefWidth="255.0" fx:id="xtName" />
+            <TextField fx:id="txtVID" layoutX="154.0" layoutY="20.0" onAction="#VNBOnaction" prefHeight="25.0" prefWidth="255.0" />
+            <TextField layoutX="154.0" layoutY="60.0" onAction="#NameOnaction" prefHeight="25.0" prefWidth="255.0" fx:id="xtName" />
             <TextField fx:id="txtDate" layoutX="607.0" layoutY="20.0" prefHeight="25.0" prefWidth="255.0" />
-            <TextField fx:id="txtTel" layoutX="607.0" layoutY="60.0" prefHeight="25.0" prefWidth="255.0" />
+            <TextField fx:id="txtTel" layoutX="607.0" layoutY="60.0" onAction="#TelOnAction" prefHeight="25.0" prefWidth="255.0" />
             <Label layoutX="46.0" layoutY="19.0" prefHeight="25.0" prefWidth="144.0" text="VehicleNB" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
@@ -95,7 +95,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="804.0" layoutY="639.0" mnemonicParsing="false" onAction="#SaveOnaction" prefHeight="60.0" prefWidth="100.0" style="-fx-background-color: #cc82af;" text="Save" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="143.0">
+            <Button fx:id="savebtn" layoutX="804.0" layoutY="639.0" mnemonicParsing="false" onAction="#SaveOnaction" prefHeight="60.0" prefWidth="100.0" style="-fx-background-color: #cc82af;" text="Save" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="143.0">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -242,7 +242,7 @@
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
       </ToggleButton>
-      <ToggleButton id="nav-button" fx:id="SearchStock" layoutX="-13.0" layoutY="585.0" mnemonicParsing="false" onAction="#ViewStockOnAction" prefHeight="30.0" prefWidth="263.0" stylesheets="@style.css" text="Search Stock" textAlignment="RIGHT" textFill="#347928">
+      <ToggleButton id="nav-button" fx:id="SearchStock" layoutX="-13.0" layoutY="585.0" mnemonicParsing="false" onAction="#ViewStockOnAction" prefHeight="30.0" prefWidth="263.0" stylesheets="@style.css" text="Update Stock" textAlignment="RIGHT" textFill="#347928">
          <font>
             <Font name="System Bold Italic" size="23.0" />
          </font>

@@ -121,7 +121,7 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Button fx:id="deletebtn" layoutX="1024.0" layoutY="299.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="31.0" prefWidth="182.0" style="-fx-background-color: FF6600; -fx-background-radius: 30;" text="Delete" textFill="WHITE">
+      <Button fx:id="deletebtn" layoutX="1024.0" layoutY="299.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="31.0" prefWidth="182.0" style="-fx-background-color: FF6600; -fx-background-radius: 30;" stylesheets="@style.css" text="Delete" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -153,7 +153,7 @@
          </cursor>
       </ImageView>
       <ListView fx:id="ListSearch" layoutX="1035.0" layoutY="107.0" prefHeight="87.0" prefWidth="256.0" />
-      <Button id="homePage" layoutX="53.0" layoutY="688.0" mnemonicParsing="false" onAction="#HomePageOnAction" prefHeight="40.0" prefWidth="220.0" text="HOME PAGE" textFill="WHITE">
+      <Button id="homePage" layoutX="53.0" layoutY="688.0" mnemonicParsing="false" onAction="#HomePageOnAction" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: B43F3F;" text="HOME PAGE" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -208,7 +208,7 @@
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
       </ToggleButton>
-      <ToggleButton id="nav-button" fx:id="SearchStock" layoutX="-20.0" layoutY="601.0" mnemonicParsing="false" onAction="#ViewStockOnAction" prefHeight="30.0" prefWidth="263.0" stylesheets="@style.css" text="Search Stock" textAlignment="RIGHT" textFill="#347928">
+      <ToggleButton id="nav-button" fx:id="SearchStock" layoutX="-20.0" layoutY="601.0" mnemonicParsing="false" onAction="#ViewStockOnAction" prefHeight="30.0" prefWidth="263.0" stylesheets="@style.css" text="Update Stock" textAlignment="RIGHT" textFill="#347928">
          <font>
             <Font name="System Bold Italic" size="23.0" />
          </font>
@@ -216,5 +216,13 @@
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
       </ToggleButton>
+      <Button id="danger-button" layoutX="1246.0" layoutY="1.0" mnemonicParsing="false" onMouseClicked="#fileOpen" prefHeight="31.0" prefWidth="130.0" style="-fx-background-color: #141422; -fx-border-radius: 30;" stylesheets="@style.css" text="PDF OPEN" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
    </children>
+   <cursor>
+      <Cursor fx:constant="HAND" />
+   </cursor>
 </AnchorPane>

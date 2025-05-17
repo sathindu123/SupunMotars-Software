@@ -42,6 +42,10 @@ public class DashbordController extends HelloController{
     private StockManageModel ST_MANAGE_MODEL;
     private DashbordManageModel DASHBORD_MANAGE_MODEL;
 
+    @FXML
+    private Label lblQty;
+    @FXML
+    private Label lblQT;
 
     @FXML
     private ListView<String> ListView;
@@ -125,6 +129,8 @@ public class DashbordController extends HelloController{
        // setcellValues();
 
 
+        lblQty.setVisible(false);
+        lblQT.setVisible(false);
 
         txId.setOnKeyReleased(this::onKeyReleased);
 
@@ -299,6 +305,16 @@ public class DashbordController extends HelloController{
                 txPrice.setText("");
                 txDiscount.setText("");
             }
+            lblQT.setStyle("-fx-border-color: null; -fx-border-width: 0px;");
+            int cc = DASHBORD_MANAGE_MODEL.getCount(id);
+            lblQT.setVisible(true);
+            lblQty.setVisible(true);
+            lblQT.setText(""+cc);
+            if(cc<=10){
+                lblQT.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
+            }else {
+                lblQT.setStyle("-fx-border-color: null; -fx-border-width: 0px;");
+            }
 
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -389,6 +405,8 @@ public class DashbordController extends HelloController{
     }
 
     public void AddAonAction(ActionEvent event) {
+        lblQT.setVisible(false);
+        lblQty.setVisible(false);
         String ids = txId.getText();
 
         int oID = Integer.parseInt(OrderIDLBL.getText());
@@ -548,7 +566,6 @@ public class DashbordController extends HelloController{
     public void onActionPayUpbtn(ActionEvent event) throws SQLException, ClassNotFoundException {
 
 
-
         boolean condition = false;
 
         int odId = Integer.parseInt(OrderIDLBL.getText());
@@ -566,15 +583,15 @@ public class DashbordController extends HelloController{
         String ml1 = Ml1.getText();
 
 
-            String pays = txtcashPay.getText();
-            String  tot = lblTotPrice.getText();
-            String tel = customerTel.getText();
-            String higas = lblBalance.getText();
+        String pays = txtcashPay.getText();
+        String  tot = lblTotPrice.getText();
+        String tel = customerTel.getText();
+        String higas = lblBalance.getText();
         String numericString = higas.replaceAll(",", "");
         double pay;
         double higa = 0;
         try {
-             higa = Double.parseDouble(numericString);
+            higa = Double.parseDouble(numericString);
 
             pay = Double.parseDouble(pays);
         } catch (NumberFormatException e) {
@@ -584,7 +601,7 @@ public class DashbordController extends HelloController{
 
         if(vehicleNb == null || vehicleNb.isEmpty() ){
             JOptionPane.showMessageDialog(null, "Vehicle NB is Empty", "Validation Error", JOptionPane.ERROR_MESSAGE);
-            return ;
+            return;
         }
         if(tel == null || tel.isEmpty() ){
             JOptionPane.showMessageDialog(null, "Customer Tell NB is empty", "Validation Error", JOptionPane.ERROR_MESSAGE);
@@ -593,19 +610,9 @@ public class DashbordController extends HelloController{
 
         try {
             Boolean ss = DASHBORD_MANAGE_MODEL.cheackOrderID(odId);
-
             if (ss == true){
-                boolean ssk = DASHBORD_MANAGE_MODEL.cheakAnother(odId);
-
-                if (ssk == false){
-                        JOptionPane.showMessageDialog(null, "this bill is pay bill ", "Validation Error", JOptionPane.ERROR_MESSAGE);
-                         return;
-                }else {
-                    payaupbtns();
-                }
-
+                JOptionPane.showMessageDialog(null, "this bill is pay bill ", "Validation Error", JOptionPane.ERROR_MESSAGE);
                 return;
-
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -614,56 +621,6 @@ public class DashbordController extends HelloController{
         } catch (HeadlessException e) {
             throw new RuntimeException(e);
         }
-
-        payaupbtn();
-
-
-
-    }
-
-    private void payaupbtns() throws SQLException, ClassNotFoundException {
-        boolean condition = false;
-
-        int odId = Integer.parseInt(OrderIDLBL.getText());
-        String id = txId.getText();
-        String type = lblName.getText();
-        String price = txPrice.getText();
-        String date = txtDate.getText();
-        String count = txCount.getText();
-        String discount = txDiscount.getText();
-        String rate = lblPrice.getText();
-        String vehicleNb = txtvehicleId.getText();
-
-
-        String ml = Ml.getText();
-        String ml1 = Ml1.getText();
-
-
-        String pays = txtcashPay.getText();
-        String  tot = lblTotPrice.getText();
-        String tel = customerTel.getText();
-        String higas = lblBalance.getText();
-        String numericString = higas.replaceAll(",", "");
-        double pay;
-        double higa = 0;
-        try {
-            higa = Double.parseDouble(numericString);
-
-            pay = Double.parseDouble(pays);
-        } catch (NumberFormatException e) {
-
-        }
-
-
-        if(vehicleNb == null || vehicleNb.isEmpty() ){
-            JOptionPane.showMessageDialog(null, "Vehicle NB is Empty", "Validation Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        if(tel == null || tel.isEmpty() ){
-            JOptionPane.showMessageDialog(null, "Customer Tell NB is empty", "Validation Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
 
 
         int cont = 0;
@@ -694,7 +651,6 @@ public class DashbordController extends HelloController{
 
 
         try {
-            boolean ssk = ST_MANAGE_MODEL.deleteOrders(odId);
             List<DashBordManageDto> DD = ST_MANAGE_MODEL.pastDetailPayments(odId);
 
             DL.addAll(DD);
@@ -713,130 +669,14 @@ public class DashbordController extends HelloController{
 
             }
         } catch (HeadlessException e) {
-            System.out.println(e.getMessage());
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        } catch (ClassNotFoundException e) {
-            System.out.println(e.getMessage());
+            throw new RuntimeException(e);
         }
-
-
 
         clJusperRiport();
-
-
-
-
-
-
-
     }
 
-    private void payaupbtn() throws SQLException, ClassNotFoundException {
-        boolean condition = false;
-
-        int odId = Integer.parseInt(OrderIDLBL.getText());
-        String id = txId.getText();
-        String type = lblName.getText();
-        String price = txPrice.getText();
-        String date = txtDate.getText();
-        String count = txCount.getText();
-        String discount = txDiscount.getText();
-        String rate = lblPrice.getText();
-        String vehicleNb = txtvehicleId.getText();
 
 
-        String ml = Ml.getText();
-        String ml1 = Ml1.getText();
-
-
-        String pays = txtcashPay.getText();
-        String  tot = lblTotPrice.getText();
-        String tel = customerTel.getText();
-        String higas = lblBalance.getText();
-        String numericString = higas.replaceAll(",", "");
-        double pay;
-        double higa = 0;
-        try {
-            higa = Double.parseDouble(numericString);
-
-            pay = Double.parseDouble(pays);
-        } catch (NumberFormatException e) {
-
-        }
-
-
-        if(vehicleNb == null || vehicleNb.isEmpty() ){
-            JOptionPane.showMessageDialog(null, "Vehicle NB is Empty", "Validation Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        if(tel == null || tel.isEmpty() ){
-            JOptionPane.showMessageDialog(null, "Customer Tell NB is empty", "Validation Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-
-
-        int cont = 0;
-        double dis = 0;
-        double prc = 0;
-        double rat = 0;
-
-        try {
-            cont = Integer.parseInt(count);
-            dis = Double.parseDouble(discount);
-            prc = Double.parseDouble(price);
-            rat = Double.parseDouble(rate);
-
-            if (cont == 0) {
-                JOptionPane.showMessageDialog(null, "Count,  is not a 0 ", "Validation Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-        }catch (NumberFormatException e){
-            //  System.out.println("NUll");
-        }
-        ObservableList<DashBordManageDto> DL = FXCollections.observableArrayList();
-        CustomerVehicelDto customerVehicelDto = new CustomerVehicelDto(odId,vehicleNb);
-
-        String numericStrings = tot.replaceAll(",", "");
-        double number = Double.parseDouble(numericStrings);
-
-        HigabillDto higabillDto = new HigabillDto(odId,vehicleNb,tel,date,number,higa);
-
-
-        try {
-            boolean ssk = ST_MANAGE_MODEL.deleteOrders(odId);
-            List<DashBordManageDto> DD = ST_MANAGE_MODEL.pastDetailPayments(odId);
-
-            DL.addAll(DD);
-            try {
-
-                String rsp = ST_MANAGE_MODEL.InsertPaymentDetails(customerVehicelDto,odId,DL,vehicleNb,higabillDto,higa,ml,ml1,tel);
-                JOptionPane.showMessageDialog(null, "Sucsess " + rsp + JOptionPane.ERROR_MESSAGE);
-
-
-
-            } catch (SQLException e) {
-                JOptionPane.showMessageDialog(null, "Fail " + e.getMessage() + JOptionPane.ERROR_MESSAGE);
-
-            } catch (ClassNotFoundException e) {
-                JOptionPane.showMessageDialog(null, "Fail " + e.getMessage() + JOptionPane.ERROR_MESSAGE);
-
-            }
-        } catch (HeadlessException e) {
-            System.out.println(e.getMessage());
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        } catch (ClassNotFoundException e) {
-            System.out.println(e.getMessage());
-        }
-
-
-        clJusperRiport();
-
-
-
-    }
 
     private void clJusperRiport() throws SQLException, ClassNotFoundException {
         Thread thread = new Thread(() -> {
@@ -1054,6 +894,8 @@ public class DashbordController extends HelloController{
             JOptionPane.showMessageDialog(null, "Save Status: " + e.getMessage(), "Save Status", JOptionPane.INFORMATION_MESSAGE);
 
         }
+        clearDataAll();
+        clClear();
     }
 
     public void savebtnOnAction(ActionEvent event) throws SQLException, ClassNotFoundException {

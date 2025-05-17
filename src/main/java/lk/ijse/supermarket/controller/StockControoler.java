@@ -8,35 +8,51 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import lk.ijse.supermarket.dto.StockManageDto;
 import lk.ijse.supermarket.model.StockManageModel;
 
-import javax.swing.*;
-import java.io.IOException;
-import java.sql.SQLException;
+
+import java.awt.*;
+import java.io.*;
+import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-public class StockControoler extends DashbordController{
-    private StockManageModel STOCK_MANGE_MODEL;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import javax.swing.*;
+
+
+public class StockControoler extends DashbordController {
+    private static StockManageModel STOCK_MANGE_MODEL;
 
     @FXML
     private TableView<StockManageDto> tbleStock;
     @FXML
-    private TableColumn<StockManageDto,String > clId;
+    private TableColumn<StockManageDto, String> clId;
     @FXML
-    private TableColumn<StockManageDto,String >clType;
+    private TableColumn<StockManageDto, String> clType;
     @FXML
-    private TableColumn<StockManageDto,Integer>clCount;
+    private TableColumn<StockManageDto, Integer> clCount;
     @FXML
-    private TableColumn<StockManageDto,Double>clPrice;
+    private TableColumn<StockManageDto, Double> clPrice;
     @FXML
-    private TableColumn<StockManageDto,String >clPlaceHolder;
+    private TableColumn<StockManageDto, String> clPlaceHolder;
 
     @FXML
     private TableColumn<StockManageDto, Double> PP;
@@ -80,11 +96,11 @@ public class StockControoler extends DashbordController{
     @FXML
     private Button deletebtn;
 
-    public StockControoler(){
+    public StockControoler() {
         STOCK_MANGE_MODEL = new StockManageModel();
     }
 
-    public void initialize(){
+    public void initialize() {
         txtSeacrhBar.setOnKeyReleased(this::handleKeyRelesed);
         UpdateBtn.setDisable(true);
         AddBtn.setDisable(false);
@@ -98,10 +114,10 @@ public class StockControoler extends DashbordController{
         clPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
 
 
-        clPrice.setStyle("-fx-alignment: CENTER-RIGHT;"+"-fx-font-size: 17px;");
-        PP.setStyle("-fx-alignment: CENTER-RIGHT;"+"-fx-font-size: 17px;");
-        clPlaceHolder.setStyle("-fx-alignment: CENTER-RIGHT;"+"-fx-font-size: 17px;");
-        clCount.setStyle("-fx-alignment: CENTER-RIGHT;"+"-fx-font-size: 17px;");
+        clPrice.setStyle("-fx-alignment: CENTER-RIGHT;" + "-fx-font-size: 17px;");
+        PP.setStyle("-fx-alignment: CENTER-RIGHT;" + "-fx-font-size: 17px;");
+        clPlaceHolder.setStyle("-fx-alignment: CENTER-RIGHT;" + "-fx-font-size: 17px;");
+        clCount.setStyle("-fx-alignment: CENTER-RIGHT;" + "-fx-font-size: 17px;");
         clId.setStyle("-fx-font-size: 17px;");
         clType.setStyle("-fx-font-size: 17px;");
 
@@ -110,9 +126,9 @@ public class StockControoler extends DashbordController{
 
         ListSearch.setVisible(false);
 
-        ListSearch.setOnMouseClicked(event ->{
+        ListSearch.setOnMouseClicked(event -> {
             String slect = ListSearch.getSelectionModel().getSelectedItem();
-            if(slect != null){
+            if (slect != null) {
                 txtSeacrhBar.setText(slect);
                 ListSearch.getItems().clear();
                 ListSearch.setVisible(false);
@@ -124,7 +140,7 @@ public class StockControoler extends DashbordController{
 
     private void handleKeyRelesed(KeyEvent keyEvent) {
         String sc = txtSeacrhBar.getText();
-        if(sc.isEmpty()){
+        if (sc.isEmpty()) {
             ListSearch.getItems().clear();
             ListSearch.setVisible(false);
             return;
@@ -139,12 +155,12 @@ public class StockControoler extends DashbordController{
             System.out.println(e.getMessage());
         }
 
-        if (!sgest.isEmpty()){
+        if (!sgest.isEmpty()) {
             ListSearch.getItems().setAll(sgest);
             AllGETITEM();
             ListSearch.setVisible(true);
-           // AllGETITEM();
-        }else {
+            // AllGETITEM();
+        } else {
             ListSearch.getItems().clear();
             ListSearch.setVisible(false);
         }
@@ -181,7 +197,6 @@ public class StockControoler extends DashbordController{
     }
 
 
-
     public void HomePageOnAction(ActionEvent event) throws IOException {
 
         try {
@@ -198,7 +213,6 @@ public class StockControoler extends DashbordController{
     }
 
 
-
     public void btnAddOnAction(ActionEvent event) {
         String id = txtId.getText();
         String type = txtType.getText();
@@ -207,16 +221,16 @@ public class StockControoler extends DashbordController{
         String plaseHolder = txtPlaceHolder.getText();
         double sell = Double.parseDouble(txtPrice2.getText());
 
-        if(id == null || id.isEmpty() || type == null || type.isEmpty() ||
+        if (id == null || id.isEmpty() || type == null || type.isEmpty() ||
                 count == null || count.isEmpty() || price == null || price.isEmpty()
-                || plaseHolder == null || plaseHolder.isEmpty()){
-            JOptionPane.showMessageDialog(null,"All filed must be not Completed","Validation Error ",JOptionPane.ERROR_MESSAGE);
+                || plaseHolder == null || plaseHolder.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "All filed must be not Completed", "Validation Error ", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
         int cont = 0;
         double prc = 0;
-        try{
+        try {
             cont = Integer.parseInt(count);
             prc = Double.parseDouble(price);
 
@@ -224,7 +238,7 @@ public class StockControoler extends DashbordController{
 
         }
 
-        StockManageDto stockManageDto = new StockManageDto(id,type,cont,sell,prc,plaseHolder);
+        StockManageDto stockManageDto = new StockManageDto(id, type, cont, sell, prc, plaseHolder);
         ObservableList<StockManageDto> list = FXCollections.observableArrayList();
         try {
             String resp = STOCK_MANGE_MODEL.InsertData(stockManageDto);
@@ -238,9 +252,9 @@ public class StockControoler extends DashbordController{
 
     public void onActionStockID(ActionEvent event) {
         String id = txtId.getText();
-        try{
+        try {
             List<StockManageDto> Cdto = STOCK_MANGE_MODEL.getDetailsSEtId(id);
-            if(Cdto.size() > 0){
+            if (Cdto.size() > 0) {
                 StockManageDto data = Cdto.get(0);
 
                 txtType.setText(String.valueOf(data.getType()));
@@ -248,8 +262,7 @@ public class StockControoler extends DashbordController{
                 txtPrice.setText(String.valueOf(data.getPrice()));
                 txtPlaceHolder.setText(String.valueOf(data.getPlaceHolder()));
 
-            }
-            else {
+            } else {
                 txtType.requestFocus();
                 txtType.setText("");
                 txtPlaceHolder.setText("");
@@ -269,15 +282,15 @@ public class StockControoler extends DashbordController{
         String plaseHolder = txtPlaceHolder.getText();
         double sell = Double.parseDouble(txtPrice2.getText());
 
-        if(id == null || id.isEmpty() || type == null || type.isEmpty() ||
+        if (id == null || id.isEmpty() || type == null || type.isEmpty() ||
                 count == null || count.isEmpty() || price == null || price.isEmpty()
-                || plaseHolder == null || plaseHolder.isEmpty()){
-            JOptionPane.showMessageDialog(null,"All filed must be not Completed","Validation Error ",JOptionPane.ERROR_MESSAGE);
+                || plaseHolder == null || plaseHolder.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "All filed must be not Completed", "Validation Error ", JOptionPane.ERROR_MESSAGE);
         }
 
         int cont = 0;
         double prc = 0;
-        try{
+        try {
             cont = Integer.parseInt(count);
             prc = Double.parseDouble(price);
 
@@ -285,7 +298,7 @@ public class StockControoler extends DashbordController{
 
         }
 
-        StockManageDto stockManageDto = new StockManageDto(id,type,cont,sell,prc,plaseHolder);
+        StockManageDto stockManageDto = new StockManageDto(id, type, cont, sell, prc, plaseHolder);
         //ObservableList<StockManageDto> list = FXCollections.observableArrayList();
         try {
             String resp = STOCK_MANGE_MODEL.UpdateData(stockManageDto);
@@ -337,9 +350,9 @@ public class StockControoler extends DashbordController{
     public void OnACtiondis(ActionEvent event) {
         double price = Double.parseDouble(txtPrice2.getText());
         int di = Integer.parseInt(txtPrice1.getText());
-        double x = ((di*price)/100);
+        double x = ((di * price) / 100);
 
-        txtPrice.setText(""+(x+price));
+        txtPrice.setText("" + (x + price));
         txtPlaceHolder.requestFocus();
     }
 
@@ -402,7 +415,7 @@ public class StockControoler extends DashbordController{
 
         try {
             List<StockManageDto> ss = STOCK_MANGE_MODEL.getDetailsEqualType(type);
-            if (ss.isEmpty()){
+            if (ss.isEmpty()) {
                 ss = STOCK_MANGE_MODEL.getDetailsEqualType1(type);
             }
             sd.addAll(ss);
@@ -415,4 +428,138 @@ public class StockControoler extends DashbordController{
         tbleStock.setItems(sd);
     }
 
+    public void fileOpen(MouseEvent mouseEvent) {
+        Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        // FileChooser ekak hadanawa
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("File ekak select karanna");
+
+        // (Optional) mula folder ekak denna
+        // fileChooser.setInitialDirectory(new File("C:/"));
+
+        // User kenek file ekak select karaddi
+
+        File selectedFile = fileChooser.showOpenDialog(stage);
+
+        // File ekak select kala nam
+        if (selectedFile != null) {
+            System.out.println("Selected file: " + selectedFile.getAbsolutePath());
+        } else {
+            System.out.println("File ekak select karanna athi bava nawatha balanna.");
+        }
+
+        processExcel(selectedFile.getAbsolutePath());
+
+
+    }
+
+
+
+    public void processExcel(String excelPath) {
+        List<String[]> notFoundItems = new ArrayList<>();
+
+        try (FileInputStream fis = new FileInputStream(new File(excelPath));
+             Workbook workbook = new XSSFWorkbook(fis)) {
+
+            Sheet sheet = workbook.getSheetAt(0);
+
+            for (int i = 3; i <= sheet.getLastRowNum(); i++) {
+                Row row = sheet.getRow(i);
+
+                if (row == null || row.getCell(1) == null) continue;
+
+                String partNo = row.getCell(1).getStringCellValue().trim();
+                String type = row.getCell(2).getStringCellValue().trim();
+                String netPrices = String.valueOf(row.getCell(4).getNumericCellValue());
+                String qtys = String.valueOf(row.getCell(5).getNumericCellValue());
+
+                double netPrice = 0;
+                int qty = 0;
+                try {
+                    netPrice = Double.parseDouble(netPrices);
+                    qty =(int) Double.parseDouble(qtys);
+
+                } catch (NumberFormatException e) {
+                    System.out.println(e.getMessage());
+                }
+
+                double sellPrice = netPrice;
+                double price = ((netPrice * 0.3)/100);
+                price = price+netPrice;
+                // check if partNo (id) exists
+                boolean v1s = STOCK_MANGE_MODEL.selectCount(partNo, qty, price, sellPrice);
+                if (v1s == false) {
+                    notFoundItems.add(new String[]{partNo, type, String.valueOf(netPrice), String.valueOf(qty)});
+                    for (String[] item : notFoundItems) {
+                    }
+                }
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        } catch (ClassNotFoundException ex) {
+            throw new RuntimeException(ex);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        // Write missing items to new Excel file
+        if (!notFoundItems.isEmpty()) {
+            try (Workbook newWorkbook = new XSSFWorkbook()) {
+                Sheet sheet = newWorkbook.createSheet("Missing Items");
+                Row header = sheet.createRow(0);
+                header.createCell(0).setCellValue("PART NO");
+                header.createCell(1).setCellValue("TYPE");
+                header.createCell(2).setCellValue("NET PRICE");
+                header.createCell(3).setCellValue("QTY");
+
+                int rowIdx = 1;
+                for (String[] item : notFoundItems) {
+                    Row row = sheet.createRow(rowIdx++);
+                    for (int j = 0; j < item.length; j++) {
+                        row.createCell(j).setCellValue(item[j]);
+                    }
+                }
+
+                String outputPath = System.getProperty("user.home") + "/Desktop/missing_parts.xlsx";
+                File file = new File(outputPath);
+                System.out.println("Writing missing parts Excel to: " + file.getAbsolutePath());
+
+                try (FileOutputStream out = new FileOutputStream(file)) {
+                    newWorkbook.write(out);
+                }
+
+                System.out.println("Missing items saved to 'missing_parts.xlsx'");
+            } catch (IOException e) {
+                System.err.println("Error while writing missing parts Excel file:");
+                e.printStackTrace();
+            }
+
+            loadTableStock();
+            openxcel();
+        }
+
+    }
+
+    private static void openxcel() {
+        try {
+            String outputPath = System.getProperty("user.home") + "/Desktop/missing_parts.xlsx";
+            File file = new File(outputPath);
+
+            if (file.exists()) {
+                Desktop.getDesktop().open(file); // This will open the file with default application (e.g., MS Excel)
+            } else {
+                System.out.println("File not found: " + outputPath);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
 }
+
+

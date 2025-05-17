@@ -136,9 +136,8 @@ public class ViewController extends DashbordController{
             double net = VIEW_MODEL.netProfit();
             String pprc = formatter.format(prc);
             lblTotDaily.setText(""+pprc+".00  ");
-        System.out.println(pprc);
-
-
+            String pp = formatter.format(net);
+            netAmount.setText(""+pp+".00");
             tblDaily.setItems(OLis);
 
     }

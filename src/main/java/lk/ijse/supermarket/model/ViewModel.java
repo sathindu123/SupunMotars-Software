@@ -89,16 +89,39 @@ public class ViewModel {
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String formattedDate = LocalDateTime.now().format(dateFormatter);
         Connection connection = DBConnection.getInstance().getConnection();
-        String sql = "SELECT SUM(price)as price FROM payments WHERE date = ?";
-        PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setString(1,formattedDate);
 
-        double pc = 0;
+        double totalProfit = 0;
+
+        // 1. Get all product IDs for today's payments
+        String sql = "SELECT productId FROM payments WHERE date = ?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1, formattedDate);
         ResultSet resultSet = statement.executeQuery();
 
-        if(resultSet.next()){
-            pc = resultSet.getDouble("price");
+        while (resultSet.next()) {
+            String productId = resultSet.getString("productId");
+
+            // 2. For each productId, get the sellPrice from stock
+            String sql2 = "SELECT sellPrice FROM stock WHERE type = ?";
+            PreparedStatement statement2 = connection.prepareStatement(sql2);
+            statement2.setString(1, productId);
+            ResultSet resultSet2 = statement2.executeQuery();
+
+            if (resultSet2.next()) {
+                double sellPrice = resultSet2.getDouble("sellPrice");
+                totalProfit += sellPrice; // add to total
+            }
+
+            // Close inner statement and resultSet
+            resultSet2.close();
+            statement2.close();
         }
-        return pc;
+
+        // Close outer statement and resultSet
+        resultSet.close();
+        statement.close();
+
+        return totalProfit;
     }
+
 }

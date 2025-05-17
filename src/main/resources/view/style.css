@@ -6,6 +6,12 @@
 
 }
 
+#roots{
+    -fx-font-family: 'Poppins', sans-serif;
+    -fx-background-color: linear-gradient(to bottom, #1E1E2E, #141422);
+    -fx-text-fill: white;
+}
+
 /* Sidebar Navigation */
 .nav-button {
     -fx-background-color: #8e1924;
@@ -185,11 +191,16 @@
     -fx-background-color: #1E1E2E;
 }
 
+#l1{
+     -fx-text-fill: black;
+     -fx-font-weight: bold;
+}
 
 
-
-
-
+#l2{
+-fx-font-size: 25px;
+-fx-font-weight: bold;
+}
 
 
 

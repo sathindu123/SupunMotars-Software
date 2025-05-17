@@ -50,7 +50,7 @@ public class buyStockController implements Initializable {
 
 
     public void SearchOnAction(javafx.event.ActionEvent event) {
-
+        txtCount.requestFocus();
     }
 
     public void countOnAction(javafx.event.ActionEvent event) {
