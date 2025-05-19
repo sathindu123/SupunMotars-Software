@@ -124,4 +124,50 @@ public class ViewModel {
         return totalProfit;
     }
 
+
+    public List<Double> getnetPrice() throws SQLException, ClassNotFoundException {
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM");
+        String baseDate = LocalDateTime.now().format(dateFormatter); // e.g., "2025-05"
+        Connection connection = DBConnection.getInstance().getConnection();
+
+        List<Double> dailyProfits = new ArrayList<>();
+
+        for (int i = 1; i <= 31; i++) {
+            // Reset daily profit
+            double dailyProfit = 0;
+
+            // Format the full date as yyyy-MM-dd
+            String dayString = String.format("%02d", i); // pads 1 -> "01"
+            String fullDate = baseDate + "-" + dayString;
+
+            String sql = "SELECT productId FROM payments WHERE date = ?";
+            try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+                stmt.setString(1, fullDate);
+
+                try (ResultSet rs = stmt.executeQuery()) {
+                    while (rs.next()) {
+                        String productId = rs.getString("productId");
+
+                        // Now fetch sellPrice from stock table
+                        String sql2 = "SELECT sellPrice FROM stock WHERE type = ?";
+                        try (PreparedStatement stmt2 = connection.prepareStatement(sql2)) {
+                            stmt2.setString(1, productId);
+                            try (ResultSet rs2 = stmt2.executeQuery()) {
+                                if (rs2.next()) {
+                                    double sellPrice = rs2.getDouble("sellPrice");
+                                    dailyProfit += sellPrice;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Add the day's total profit
+            dailyProfits.add(dailyProfit);
+        }
+
+        return dailyProfits;
+    }
+
 }

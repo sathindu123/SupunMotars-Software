@@ -6,6 +6,12 @@
 
 }
 
+#profitLabel{
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+     -fx-font-size: 18px;
+}
+
 #roots{
     -fx-font-family: 'Poppins', sans-serif;
     -fx-background-color: linear-gradient(to bottom, #1E1E2E, #141422);
@@ -112,7 +118,7 @@
 }
 
 
-#primary-button:hover {
+#primary-button:hover {[2
     -fx-background-color: #3B3F5C;
 }
 

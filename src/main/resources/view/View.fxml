@@ -225,7 +225,7 @@
                               <Font name="Arial Rounded MT Bold" size="30.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lblTotDaily" alignment="CENTER_RIGHT" layoutX="497.0" layoutY="596.0" prefHeight="35.0" prefWidth="224.0" style="-fx-background-color: #add8e6;">
+                        <Label id="profitLabel" fx:id="lblTotDaily" alignment="CENTER_RIGHT" layoutX="497.0" layoutY="596.0" prefHeight="35.0" prefWidth="224.0" style="-fx-background-color: #add8e6;">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -235,12 +235,12 @@
                               <Font name="System Bold" size="24.0" />
                            </font>
                         </Label>
-                        <Label layoutX="1093.0" layoutY="593.0" prefHeight="35.0" prefWidth="224.0" style="-fx-background-color: #add8e6;">
+                        <Label id="profitLabel" fx:id="monthTotal" alignment="CENTER" layoutX="1093.0" layoutY="593.0" prefHeight="35.0" prefWidth="224.0" style="-fx-background-color: #add8e6;">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
                         </Label>
-                        <Label fx:id="netAmount" alignment="CENTER_RIGHT" layoutX="497.0" layoutY="637.0" prefHeight="35.0" prefWidth="224.0" style="-fx-background-color: #28A745;" stylesheets="@style.css">
+                        <Label id="profitLabel" fx:id="netAmount" alignment="CENTER_RIGHT" layoutX="497.0" layoutY="637.0" prefHeight="35.0" prefWidth="224.0" style="-fx-background-color: #28A745;" stylesheets="@style.css">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -250,6 +250,38 @@
                               <Font name="System Bold" size="24.0" />
                            </font>
                         </Label>
+                        <Label fx:id="l1" alignment="CENTER" layoutX="853.0" layoutY="108.0" prefHeight="30.0" prefWidth="182.0" style="-fx-background-color: #141422;" />
+                        <Label fx:id="l2" alignment="CENTER" layoutX="853.0" layoutY="138.0" prefHeight="30.0" prefWidth="182.0" style="-fx-background-color: #141422;" />
+                        <Label fx:id="l3" alignment="CENTER" layoutX="853.0" layoutY="168.0" prefHeight="30.0" prefWidth="182.0" style="-fx-background-color: #141422;" />
+                        <Label fx:id="l4" alignment="CENTER" layoutX="853.0" layoutY="198.0" prefHeight="30.0" prefWidth="182.0" style="-fx-background-color: #141422;" />
+                        <Label fx:id="l5" alignment="CENTER" layoutX="853.0" layoutY="228.0" prefHeight="30.0" prefWidth="182.0" style="-fx-background-color: #141422;" />
+                        <Label fx:id="l6" alignment="CENTER" layoutX="853.0" layoutY="258.0" prefHeight="30.0" prefWidth="182.0" style="-fx-background-color: #141422;" />
+                        <Label fx:id="l7" alignment="CENTER" layoutX="853.0" layoutY="288.0" prefHeight="30.0" prefWidth="182.0" style="-fx-background-color: #141422;" />
+                        <Label fx:id="l8" alignment="CENTER" layoutX="853.0" layoutY="318.0" prefHeight="30.0" prefWidth="182.0" style="-fx-background-color: #141422;" />
+                        <Label fx:id="l9" alignment="CENTER" layoutX="853.0" layoutY="348.0" prefHeight="30.0" prefWidth="182.0" style="-fx-background-color: #141422;" />
+                        <Label fx:id="l10" alignment="CENTER" layoutX="853.0" layoutY="378.0" prefHeight="30.0" prefWidth="182.0" style="-fx-background-color: #141422;" />
+                        <Label fx:id="l11" alignment="CENTER" layoutX="853.0" layoutY="408.0" prefHeight="30.0" prefWidth="182.0" style="-fx-background-color: #141422;" />
+                        <Label fx:id="l12" alignment="CENTER" layoutX="853.0" layoutY="438.0" prefHeight="30.0" prefWidth="182.0" style="-fx-background-color: #141422;" />
+                        <Label fx:id="l13" alignment="CENTER" layoutX="853.0" layoutY="468.0" prefHeight="30.0" prefWidth="182.0" style="-fx-background-color: #141422;" />
+                        <Label fx:id="l14" alignment="CENTER" layoutX="853.0" layoutY="498.0" prefHeight="30.0" prefWidth="182.0" style="-fx-background-color: #141422;" />
+                        <Label fx:id="l15" alignment="CENTER" layoutX="853.0" layoutY="528.0" prefHeight="30.0" prefWidth="182.0" style="-fx-background-color: #141422;" />
+                        <Label alignment="CENTER" layoutX="853.0" layoutY="556.0" prefHeight="30.0" prefWidth="182.0" style="-fx-background-color: #141422;" />
+                        <Label fx:id="l16" alignment="CENTER" layoutX="1132.0" layoutY="108.0" prefHeight="30.0" prefWidth="182.0" style="-fx-background-color: #141422;" />
+                        <Label fx:id="l17" alignment="CENTER" layoutX="1132.0" layoutY="138.0" prefHeight="30.0" prefWidth="182.0" style="-fx-background-color: #141422;" />
+                        <Label fx:id="l18" alignment="CENTER" layoutX="1132.0" layoutY="168.0" prefHeight="30.0" prefWidth="182.0" style="-fx-background-color: #141422;" />
+                        <Label fx:id="l19" alignment="CENTER" layoutX="1132.0" layoutY="198.0" prefHeight="30.0" prefWidth="182.0" style="-fx-background-color: #141422;" />
+                        <Label fx:id="l20" alignment="CENTER" layoutX="1132.0" layoutY="228.0" prefHeight="30.0" prefWidth="182.0" style="-fx-background-color: #141422;" />
+                        <Label fx:id="l21" alignment="CENTER" layoutX="1132.0" layoutY="258.0" prefHeight="30.0" prefWidth="182.0" style="-fx-background-color: #141422;" />
+                        <Label fx:id="l22" alignment="CENTER" layoutX="1132.0" layoutY="288.0" prefHeight="30.0" prefWidth="182.0" style="-fx-background-color: #141422;" />
+                        <Label fx:id="l23" alignment="CENTER" layoutX="1132.0" layoutY="318.0" prefHeight="30.0" prefWidth="182.0" style="-fx-background-color: #141422;" />
+                        <Label fx:id="l24" alignment="CENTER" layoutX="1132.0" layoutY="348.0" prefHeight="30.0" prefWidth="182.0" style="-fx-background-color: #141422;" />
+                        <Label fx:id="l25" alignment="CENTER" layoutX="1132.0" layoutY="378.0" prefHeight="30.0" prefWidth="182.0" style="-fx-background-color: #141422;" />
+                        <Label fx:id="l26" alignment="CENTER" layoutX="1132.0" layoutY="408.0" prefHeight="30.0" prefWidth="182.0" style="-fx-background-color: #141422;" />
+                        <Label fx:id="l27" alignment="CENTER" layoutX="1132.0" layoutY="438.0" prefHeight="30.0" prefWidth="182.0" style="-fx-background-color: #141422;" />
+                        <Label fx:id="l28" alignment="CENTER" layoutX="1132.0" layoutY="468.0" prefHeight="30.0" prefWidth="182.0" style="-fx-background-color: #141422;" />
+                        <Label fx:id="l29" alignment="CENTER" layoutX="1132.0" layoutY="498.0" prefHeight="30.0" prefWidth="182.0" style="-fx-background-color: #141422;" />
+                        <Label fx:id="l30" alignment="CENTER" layoutX="1132.0" layoutY="528.0" prefHeight="30.0" prefWidth="182.0" style="-fx-background-color: #141422;" />
+                        <Label fx:id="l31" alignment="CENTER" layoutX="1132.0" layoutY="557.0" prefHeight="30.0" prefWidth="182.0" style="-fx-background-color: #141422;" />
                      </children>
                   </AnchorPane>
                </content></Tab>

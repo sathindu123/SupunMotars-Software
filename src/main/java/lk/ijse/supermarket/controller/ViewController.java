@@ -17,6 +17,7 @@ import lk.ijse.supermarket.dto.StockManageDto;
 import lk.ijse.supermarket.model.StockManageModel;
 import lk.ijse.supermarket.model.ViewModel;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
@@ -26,6 +27,102 @@ public class ViewController extends DashbordController{
     private AnchorPane anchorPane;
     private ViewModel VIEW_MODEL;
     private StockManageModel ST_MANAGE_MODEL;
+
+    @FXML
+    private Label monthTotal;
+    @FXML
+    private Label l1;
+
+    @FXML
+    private Label l2;
+
+    @FXML
+    private Label l3;
+
+    @FXML
+    private Label l4;
+
+    @FXML
+    private Label l5;
+
+    @FXML
+    private Label l6;
+
+    @FXML
+    private Label l7;
+
+    @FXML
+    private Label l8;
+
+    @FXML
+    private Label l9;
+
+    @FXML
+    private Label l10;
+
+    @FXML
+    private Label l11;
+
+    @FXML
+    private Label l12;
+
+    @FXML
+    private Label l13;
+
+    @FXML
+    private Label l14;
+
+    @FXML
+    private Label l15;
+
+    @FXML
+    private Label l16;
+
+    @FXML
+    private Label l17;
+
+    @FXML
+    private Label l18;
+
+    @FXML
+    private Label l19;
+
+    @FXML
+    private Label l20;
+
+    @FXML
+    private Label l21;
+
+    @FXML
+    private Label l22;
+
+    @FXML
+    private Label l23;
+
+    @FXML
+    private Label l24;
+
+    @FXML
+    private Label l25;
+
+    @FXML
+    private Label l26;
+
+    @FXML
+    private Label l27;
+
+    @FXML
+    private Label l28;
+
+    @FXML
+    private Label l29;
+
+    @FXML
+    private Label l30;
+
+    @FXML
+    private Label l31;
+
 
     @FXML
     private Label netAmount;
@@ -137,9 +234,43 @@ public class ViewController extends DashbordController{
             String pprc = formatter.format(prc);
             lblTotDaily.setText(""+pprc+".00  ");
             String pp = formatter.format(net);
-            netAmount.setText(""+pp+".00");
+            netAmount.setText(""+pp+".00  ");
             tblDaily.setItems(OLis);
 
+            loadMonth();
+    }
+
+    private void loadMonth() {
+        double porofit = 0 ;
+        try {
+            List<Double> dtoList = VIEW_MODEL.getnetPrice();
+
+            Label[] labels = {
+                    l1, l2, l3, l4, l5, l6, l7, l8, l9, l10,
+                    l11, l12, l13, l14, l15, l16, l17, l18, l19, l20,
+                    l21, l22, l23, l24, l25, l26, l27, l28, l29, l30, l31
+            };
+
+            // Clear all labels
+            for (Label label : labels) {
+                label.setText("");
+            }
+
+            // Safeguard in case dtoList has fewer than 31 elements
+            int count = Math.min(dtoList.size(), labels.length);
+
+            for (int i = 0; i < count; i++) {
+                labels[i].setText(String.valueOf(dtoList.get(i)));
+                porofit += (dtoList.get(i));
+            }
+
+            monthTotal.setText(""+porofit);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,
+                    "Error occurred: " + e.getMessage(),
+                    "Database Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     private void loadTableView() throws SQLException, ClassNotFoundException {

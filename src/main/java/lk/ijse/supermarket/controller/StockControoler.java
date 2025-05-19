@@ -484,7 +484,7 @@ public class StockControoler extends DashbordController {
                 }
 
                 double sellPrice = netPrice;
-                double price = ((netPrice * 0.3)/100);
+                double price = ((netPrice * 30)/100);
                 price = price+netPrice;
                 // check if partNo (id) exists
                 boolean v1s = STOCK_MANGE_MODEL.selectCount(partNo, qty, price, sellPrice);
